@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css?family=Lora|Open+Sans&display=swap');
+:root {
+  --header-height: 60px;
+  --footer-height: 60px;
+  --padding-left: 60px;
+  --padding-right: 60px;
+  --offset: 60px;
+  --width: 100%;
+  --columns: 6;
+  --gutter: 0px;
+  --baseline: 24px;
+  --line-thickness: 1px;
+
+  --color: hsla(204, 80%, 72%, 0.25);
+  --color-text: hsla(204, 80%, 72%, 1);
+  --background-color: rgba(18,18,18,1);
+  --background-color-0: rgba(18,18,18,0);
+}
+:root {
+  --repeating-width: calc(100% / var(--columns));
+  --column-width: calc((100% / var(--columns)) - var(--gutter));
+  --background-width: calc(100% + var(--gutter));
+  --background-columns: repeating-linear-gradient(
+    to right, var(--color), var(--color) var(--line-thickness),
+    transparent var(--line-thickness),
+    transparent calc(var(--column-width) - var(--line-thickness)),
+    var(--color) calc(var(--column-width) - var(--line-thickness)),
+    var(--color) var(--column-width),
+    transparent 1px, transparent var(--repeating-width)
+  );
+  --background-baseline: repeating-linear-gradient(
+    to bottom, var(--color), var(--color) 1px,
+    transparent 1px, transparent var(--baseline)
+  );
+  --background-dargness: linear-gradient(
+    to bottom,
+    var(--background-color) 0%, var(--background-color-0) 3%,
+    var(--background-color-0) 85%, var(--background-color) 99%
+  );
+}
+
+/* Typography */
+:root {
+  --line-height-const: 1.5;
+
+  --font-size-base: 16px;
+  --h1-font-size: calc(var(--font-size-base) * 2.375);
+  --h2-font-size: calc(var(--font-size-base) * 2);
+  --h3-font-size: calc(var(--font-size-base) * 1.75);
+  --h4-font-size: calc(var(--font-size-base) * 1.5);
+  --h5-font-size: calc(var(--font-size-base) * 1.25);
+  --h6-font-size: calc(var(--font-size-base) * 1);
+
+  --font-weight-light: 300;
+  --font-weight-base: 400;
+  --font-weight-bold: 600;
+
+  --line-height-base: calc(var(--font-size-base) * var(--line-height-const));
+  --font-margin-vertical: calc(var(--font-size-base) * var(--line-height-const) / 2);
+}
+
+
+* {
+  padding: 0;
+  margin: 0;
+}
+html, body { height: 100%; }
+body { background-color: #121212; }
+app-root > header {
+ width: 100%;
+ height: var(--header-height);
+}
+app-root > section {
+  display: block;
+  width: calc(100% - (var(--padding-left) + var(--padding-right)));
+  height: calc(100% - (var(--header-height) + var(--footer-height)));
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding: 0 var(--padding-right) 0 var(--padding-left);
+  background-image: var(--background-dargness);
+}
+/*app-root > section::before {
+  position: absolute;
+  left: 0; top: 0px; right: 0; bottom: 0;
+  margin-top: var(--header-height);
+  margin-bottom: var(--footer-height);
+  content: '';
+  background-image: var(--background-dargness);
+}*/
+
+app-root > footer {
+  height: var(--footer-height);
+  display: block;
+}
+h1, h2, h3 {
+  color: rgba(255,255,255,.75);
+  font-family: 'Lora', serif;
+}
+h1 {
+  font-size: var(--h1-font-size);
+  font-weight: var(--font-weight-bold);
+  line-height: calc(var(--h1-font-size) * var(--line-height-const));
+  margin: var(--font-margin-vertical) 0;
+}
+h1 > span {
+  font-weight: var(--font-weight-base);
+}
+h2 {
+  font-size: var(--h2-font-size);
+  margin: 32px 0 16px 0;
+  line-height: 36px;
+  font-weight: 400;
+}
+h3 { font-size: var(--h3-font-size); }
+p, a, time {
+  margin-top: 8px;
+  margin-bottom: 24px;
+  font-size: 14px;
+  line-height: 24px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+article {
+  margin-left: calc(1.5 / 6  * 100%);
+  width: calc(2.5 / 6  * 100%);
+}
+article h2, h3, p {
+  padding-left: calc(2.5 / 12  * 100%);
+}
+p {
+  color: rgba(255,255,255,.6);
+}
+time {
+  color: rgba(255,255,255,.3);
+}
+a {
+  color: #42A5F5;
+}
+
+/* Grid lines */
+
+body::before {
+  position: absolute;
+  left: 0; top: 24px; right: 0; bottom: 0;
+  margin: var(--header-height) auto var(--footer-height) auto;
+  width: calc(100% - (2 * var(--offset)));
+  height: calc(100% - (var(--header-height) + var(--footer-height)));
+  content: '';
+  background-image: var(--background-columns), var(--background-baseline);
+  background-size: var(--background-width) 100%;
+  background-position: 0 0;
+  pointer-events: none;
+}
