@@ -9,11 +9,17 @@ export class BaseService {
 
   constructor(private http: HttpClient) {}
 
+  getFakeApi(url: string): Observable<any> {
+    return of(`${url}`);
+  }
+
   getAPI(url: string): Observable<any> {
     const headers = new Headers({'Content-Type' : 'application/json'});
     return this.http.get(url)
-      .pipe(map((response: Response) => response),
-        catchError(this.handleError));
+      .pipe(
+        map((response: Response) => response),
+        catchError(this.handleError)
+      );
   }
 
   private handleError(error: Response) {
