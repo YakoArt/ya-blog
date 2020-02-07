@@ -1,0 +1,67 @@
+/*
+APP LAYOUT
+prefix: lay
+Layer => app-root
+  Header
+    Nav => AppNavigation
+  Section => Layout
+    Content Section => AppModuleContent
+  Footer
+*/
+:root {
+    /* layer */
+    --lay-body-width: 100%;
+    --lay-body-height: 100%;
+    /* header */
+    --lay-header-height: 60px;
+    --lay-header-padding-top: 20px;
+    --lay-header-padding-bottom: 20px;
+    /* Content Section*/
+    --lay-padding-left: 60px;
+    --lay-padding-right: 60px;
+    --lay-padding-top: 60px;
+    --lay-padding-bottom: 60px;
+    --lay-padding: var(--lay-padding-top) var(--lay-padding-right) var(--lay-padding-bottom) var(--lay-padding-left);
+    /* footer */
+    --lay-footer-height: 50px;
+}
+
+html,
+body {
+    height: calc(var(--lay-body-height));
+}
+app-root > header {
+    display: block;
+    box-sizing: border-box;
+    position: fixed;
+    top:0;
+    width: var(--lay-body-width);
+    height: var(--lay-header-height);
+    padding: 0 var(--lay-padding-right) 0 var(--lay-padding-left);
+}
+
+app-root > section {
+    display: block;
+    box-sizing: border-box;
+    position: fixed;
+    width: calc(100%);
+    height: calc(100% - (var(--lay-header-height) + var(--lay-footer-height)));
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding: var(--lay-padding);
+    margin-top: var(--lay-header-height);
+    margin-bottom: var(--lay-footer-height);
+    /*
+    margin-top: var(--lay-padding-top);
+    margin-bottom: var(--lay-padding-bottom);
+    padding-left: var(--lay-padding-left);
+    padding-right: var(--lay-padding-right);
+    */
+}
+app-root > footer {
+    width: var(--lay-body-width);
+    height: var(--lay-footer-height);
+    display: block;
+    position: fixed;
+    bottom: 0;
+}

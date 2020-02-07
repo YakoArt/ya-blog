@@ -1,0 +1,8 @@
+
+:root {
+    --nav-bg-color: rgba(255,255,255,.3);
+    --nav-bg-color: inherit;
+}
+.app-navigation {
+    background-color: var(--nav-bg-color);
+}

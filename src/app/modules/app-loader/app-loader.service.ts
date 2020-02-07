@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Location } from '@angular/common';
 import { BaseService } from './app-base.service';
-import { map, tap } from 'rxjs/internal/operators';
-import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 
 @Injectable({

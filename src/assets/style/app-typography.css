@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css?family=Lora|Open+Sans&display=swap');
+/*
+APP TYPOGRAPHY
+prefix: tp
+Обшие правила типографики приложения. Базовые и расчеинтые размеры заголовков, шрифтов, отступов.
+*/
+:root {
+    --line-height-const: 1.5;
+
+    --font-size-base: 16px;
+    --h1-font-size: calc(var(--font-size-base) * 2.375);
+    --h2-font-size: calc(var(--font-size-base) * 2);
+    --h3-font-size: calc(var(--font-size-base) * 1.75);
+    --h4-font-size: calc(var(--font-size-base) * 1.5);
+    --h5-font-size: calc(var(--font-size-base) * 1.25);
+    --h6-font-size: calc(var(--font-size-base) * 1);
+
+    --font-weight-light: 300;
+    --font-weight-base: 400;
+    --font-weight-bold: 600;
+
+    --line-height-base: calc(var(--font-size-base) * var(--line-height-const));
+    --font-margin-vertical: calc(var(--font-size-base) * var(--line-height-const) / 2);
+}
+h1, h2, h3 {
+    color: rgba(255,255,255,.75);
+    font-family: 'Lora', serif;
+}
+h1 {
+    font-size: var(--h1-font-size);
+    font-weight: var(--font-weight-bold);
+    line-height: calc(var(--h1-font-size) * var(--line-height-const));
+    margin: var(--font-margin-vertical) 0;
+}
+h1 > span {
+    font-weight: var(--font-weight-base);
+}
+h2 {
+    font-size: var(--h2-font-size);
+    margin: 32px 0 16px 0;
+    line-height: 36px;
+    font-weight: 400;
+}
+h3 { font-size: var(--h3-font-size); }
+p, a, time {
+    margin-top: 8px;
+    margin-bottom: 24px;
+    font-size: 14px;
+    line-height: 24px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+article {
+    margin-left: calc(1.5 / 6  * 100%);
+    width: calc(2.5 / 6  * 100%);
+}
+article h2, h3, p {
+    padding-left: calc(2.5 / 12  * 100%);
+}
+p {
+    color: rgba(255,255,255,.6);
+}
+time {
+    color: rgba(255,255,255,.3);
+}
+a {
+    color: #42A5F5;
+}
